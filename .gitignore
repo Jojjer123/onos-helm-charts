@@ -5,3 +5,6 @@ build/_output
 staging/
 requirements.lock
 **/charts/*
+
+# vscode files
+.vscode
