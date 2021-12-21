@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "gnmi-netconf-adapter.name" -}}
+{{- define "custom-api.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "gnmi-netconf-adapter.fullname" -}}
+{{- define "custom-api.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,7 +27,7 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "gnmi-netconf-adapter.chart" -}}
+{{- define "custom-api.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -35,9 +35,9 @@ Create chart name and version as used by the chart label.
 {{/*
 Common labels
 */}}
-{{- define "gnmi-netconf-adapter.labels" -}}
-helm.sh/chart: {{ include "gnmi-netconf-adapter.chart" . }}
-{{ include "gnmi-netconf-adapter.selectorLabels" . }}
+{{- define "custom-api.labels" -}}
+helm.sh/chart: {{ include "custom-api.chart" . }}
+{{ include "custom-api.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -47,7 +47,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "gnmi-netconf-adapter.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "gnmi-netconf-adapter.name" . }}
+{{- define "custom-api.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "custom-api.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
