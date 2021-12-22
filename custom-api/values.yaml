@@ -18,10 +18,8 @@ resources:
 service:
   type: ClusterIP
 
-ports:
-  gnmi:
-    secure: 10161
-    insecure: 11161
+# ports: {}
+ports: []
 
 nodeSelector: {}
 

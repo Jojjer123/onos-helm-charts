@@ -13,7 +13,4 @@ spec:
   selector:
     name: {{ template "custom-api.fullname" . }}
   ports:
-    {{- range $key, $port := .Values.ports.gnmi }}
-    - name: gnmi{{ $key }}
-      port: {{ $port }}
-    {{- end}}
+    - port: 80

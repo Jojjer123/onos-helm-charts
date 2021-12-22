@@ -39,25 +39,9 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-            {{- range $key, $port := .Values.ports.gnmi }}
-            - name: GNMI_{{ $key | upper }}_PORT
-              value: {{ $port | quote }}
-            {{- end}}
-          ports:
-            {{- range $key, $port := .Values.ports.gnmi }}
-            - name: gnmi{{ $key }}
-              containerPort: {{ $port }}
-            {{- end}}
-          readinessProbe:
-            tcpSocket:
-              port: {{ .Values.ports.gnmi.secure }}
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            tcpSocket:
-              port: {{ .Values.ports.gnmi.secure }}
-            initialDelaySeconds: 15
-            periodSeconds: 20
+            
+          ports: []
+            
           volumeMounts:
             - name: config
               mountPath: /etc/simulator/configs
