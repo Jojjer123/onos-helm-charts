@@ -55,6 +55,9 @@ onos-config:
         enabled: false
       v2:
         enabled: false
+    tsn-yang:
+      v1:
+        enabled: true
 
 # ONOS-GUI
 onos-gui: {}

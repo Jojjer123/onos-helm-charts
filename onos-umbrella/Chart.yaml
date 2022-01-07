@@ -45,3 +45,7 @@ dependencies:
     condition: onos-config.models.testdevice.v2.enabled
     repository: file://../config-models/testdevice-2.x
     version: 2.0.5
+  # - name: config-model-tsn-yang
+  #   condition: onos-config.models.tsn-yang.v1.enabled
+  #   repository: file://../config-models/tsn-yang
+  #   version: 1.0.5
