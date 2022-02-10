@@ -5,14 +5,14 @@ replicaCount: 1
 annotations: {}
 
 image:
-  repository: onosproject/device-simulator
+  repository: onosproject/device-monitor
   tag: v0.0.1
   pullPolicy: IfNotPresent
   pullSecrets: []
 
 resources:
   requests:
-    cpu: 0.5
+    cpu: 1
     memory: 512Mi
 
 service:
