@@ -13,4 +13,7 @@ spec:
   selector:
     name: {{ template "device-monitor.fullname" . }}
   ports:
-    - port: 8080
+    {{- range $key, $port := .Values.ports.grpc }}
+    - name: grpc{{ $key }}
+      port: {{ $port }}
+    {{- end}}

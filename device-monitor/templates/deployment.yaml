@@ -27,8 +27,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: PYTHONUNBUFFERED
-              value: "0"
             - name: POD_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -43,8 +41,10 @@ spec:
                   fieldPath: spec.nodeName
             
           ports:
-            - containerPort: 8080
-              protocol: TCP
+            {{- range $key, $port := .Values.ports.grpc }}
+            - name: grpc{{ $key }}
+              containerPort: {{ $port }}
+            {{- end}}
             
           volumeMounts:
             - name: config
