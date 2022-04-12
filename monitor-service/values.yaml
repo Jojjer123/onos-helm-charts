@@ -6,7 +6,7 @@ annotations: {}
 
 image:
   repository: onosproject/monitor-service
-  tag: v0.0.1
+  tag: v0.0.0
   pullPolicy: IfNotPresent
   pullSecrets: []
 
