@@ -1,9 +1,9 @@
 apiVersion: v2
-name: device-monitor
+name: monitor-service
 kubeVersion: ">=1.17.0"
 type: application
-version: 0.0.0
-appVersion: v0.0.0
+version: 0.0.1
+appVersion: v0.0.1
 description: Service monitoring counters for switches in the network
 keywords:
   - onos
