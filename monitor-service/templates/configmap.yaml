@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "device-monitor.fullname" . }}-config
+  name: {{ template "monitor-service.fullname" . }}-config
   labels:
-    app: {{ template "device-monitor.fullname" . }}
+    app: {{ template "monitor-service.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"

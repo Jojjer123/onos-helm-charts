@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "device-monitor.fullname" . }}
+  name: {{ template "monitor-service.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    name: {{ template "device-monitor.fullname" . }}
+    name: {{ template "monitor-service.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "device-monitor.selectorLabels" . | nindent 6 }}
+      {{- include "monitor-service.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        name: {{ template "device-monitor.fullname" . }}
-        {{- include "device-monitor.selectorLabels" . | nindent 8 }}
+        name: {{ template "monitor-service.fullname" . }}
+        {{- include "monitor-service.selectorLabels" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -56,9 +56,9 @@ spec:
           #   periodSeconds: 20
           volumeMounts:
             - name: config
-              mountPath: /etc/device-monitor/configs
+              mountPath: /etc/monitor-service/configs
               readOnly: true
       volumes:
         - name: config
           configMap:
-            name: {{ template "device-monitor.fullname" . }}-config
+            name: {{ template "monitor-service.fullname" . }}-config

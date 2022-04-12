@@ -5,8 +5,8 @@ replicaCount: 1
 annotations: {}
 
 image:
-  repository: onosproject/device-monitor
-  tag: v0.0.0
+  repository: onosproject/monitor-service
+  tag: v0.0.1
   pullPolicy: IfNotPresent
   pullSecrets: []
 
