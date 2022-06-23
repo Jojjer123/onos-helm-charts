@@ -1,8 +1,23 @@
+global:
+  image:
+    registry: ""
+    tag: ""
+  store:
+    consensus:
+      name: ""
+      image:
+        registry: ""
+        tag: ""
+  openpolicyagent:
+    enabled: false
+    image:
+      registry: ""
+      tag: ""
+
 nameOverride: ""
 fullnameOverride: ""
 
 replicaCount: 1
-annotations: {}
 
 image:
   repository: onosproject/grpc-client
@@ -14,6 +29,24 @@ resources:
   requests:
     cpu: 0.5
     memory: 512Mi
+
+store:
+  consensus:
+    enabled: true
+    name: ""
+    image:
+      registry: ""
+      repository: atomix/atomix-raft-storage-node
+      tag: ""
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+    clusters: 1
+    replicas: 1
+    partitions: 1
+    raft: {}
+    persistence:
+      storageClass: ""
+      storageSize: 1Gi
 
 service:
   type: ClusterIP

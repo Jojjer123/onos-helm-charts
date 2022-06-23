@@ -9,12 +9,23 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
+      name: {{ template "grpc-client.fullname" . }}
+      app: onos
+      type: grpc
+      resource: {{ template "grpc-client.fullname" . }}
       {{- include "grpc-client.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         name: {{ template "grpc-client.fullname" . }}
         {{- include "grpc-client.selectorLabels" . | nindent 8 }}
+        app: onos
+        type: grpc
+        resource: {{ template "grpc-client.fullname" . }}
+        {{- include "grpc-client.selectorLabels" . | nindent 8 }}
+      annotations:
+        broker.atomix.io/inject: "true"
+        raft.storage.atomix.io/inject: "true"
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

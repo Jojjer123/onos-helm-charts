@@ -60,3 +60,35 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+grpc-client consensus image name
+*/}}
+{{- define "grpc-client.store.consensus.imagename" -}}
+{{- if or .Values.store.consensus.image.tag .Values.global.store.consensus.image.tag -}}
+{{- if .Values.global.store.consensus.image.registry -}}
+{{- printf "%s/" .Values.global.store.consensus.image.registry -}}
+{{- else if .Values.store.consensus.image.registry -}}
+{{- printf "%s/" .Values.store.consensus.image.registry -}}
+{{- end -}}
+{{- printf "%s:" .Values.store.consensus.image.repository -}}
+{{- if .Values.global.store.consensus.image.tag -}}
+{{- .Values.global.store.consensus.image.tag -}}
+{{- else -}}
+{{- .Values.store.consensus.image.tag -}}
+{{- end -}}
+{{- else -}}
+""
+{{- end -}}
+{{- end -}}
+
+{{/*
+grpc-client consensus store name
+*/}}
+{{- define "grpc-client.store.consensus.name" -}}
+{{- if .Values.store.consensus.name -}}
+{{- printf "%s" .Values.store.consensus.name -}}
+{{- else -}}
+{{- printf "%s-consensus-store" ( include "grpc-client.fullname" . ) -}}
+{{- end -}}
+{{- end -}}
