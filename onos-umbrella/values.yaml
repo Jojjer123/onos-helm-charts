@@ -35,8 +35,8 @@ import:
     enabled: false
   onos-cli:
     enabled: true
-  # grpc-client:
-  #   enabled: true
+  grpc-client:
+    enabled: true
 
 # ONOS-TOPO
 onos-topo:
@@ -57,7 +57,7 @@ onos-gui: {}
 onos-cli: {}
 
 # GRPC-CLIENT
-# grpc-client:
-#   store:
-#     consensus:
-#       enabled: false
+grpc-client:
+  store:
+    consensus:
+      enabled: false
